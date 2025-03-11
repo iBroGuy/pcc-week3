@@ -19,7 +19,6 @@ spec:
           image: "us-east1-docker.pkg.dev/cloud-concepts-451813/pcc-week3/image-pcc3:latest" 
           ports:
             - containerPort: 80
-              imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
