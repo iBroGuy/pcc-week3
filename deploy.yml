@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: "us-east1-docker.pkg.dev/cloud-concepts-451813/pcc-week3/image-pcc3-test:test" 
+          image: "us-east1-docker.pkg.dev/week1-450418/pcc-week3/image-pcc3-test:test" 
           ports:
             - containerPort: 80
 ---
