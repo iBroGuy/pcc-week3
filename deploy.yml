@@ -1,0 +1,6 @@
+GKE_CLUSTER: cluster-pcc-3    # cluster name
+GKE_ZONE: us-central1   # cluster zone
+IMAGE: image-pcc3-test  # image name
+IMAGE_TAG: test # image tag
+GAR_ZONE: us-east1 # artifact registry zone
+GAR_REPO: pcc-week3 # artifact registry repository
