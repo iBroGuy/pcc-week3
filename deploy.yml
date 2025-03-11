@@ -19,12 +19,11 @@ spec:
           image: "us-east1-docker.pkg.dev/cloud-concepts-451813/pcc-week3/image-pcc3-test:test" 
           ports:
             - containerPort: 80
-            - imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: green-service
 spec:
   selector:
     app: my-app
