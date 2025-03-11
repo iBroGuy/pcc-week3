@@ -3,12 +3,12 @@ name: Build and Deploy to GKE
 on:
   push:
     branches:
-      - test
+      - main
 
 env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-pcc-3    # cluster name
-  GKE_ZONE: eus-central1   # cluster zone
+  GKE_ZONE: us-central1   # cluster zone
   IMAGE: image-pcc3-test # image name
   IMAGE_TAG: test # image tag
   GAR_ZONE: us-east1 # artifact registry zone
@@ -18,7 +18,7 @@ jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-    environment: production
+  #  environment: production
 
     steps:
     - name: Checkout
@@ -28,7 +28,7 @@ jobs:
     - id: 'auth'
       uses: 'google-github-actions/auth@v2'
       with:
-        credentials_json: '${{ secrets.GKE_SA_KEY }}'
+        credentials_json: '${{ secrets.GCP_SA_KEY }}'
 
     # Configure Docker to use the gcloud command-line tool as a credential
     # helper for authentication
@@ -38,7 +38,7 @@ jobs:
 
     # Get the GKE credentials so we can deploy to the cluster
     - name: Set up GKE credentials
-      uses: google-github-actions/get-gke-credentials@v2
+      uses: google-github-actions/get-gke-credentials@v0
       with:
         cluster_name: ${{ env.GKE_CLUSTER }}
         location: ${{ env.GKE_ZONE }}
@@ -56,7 +56,7 @@ jobs:
       run: |-
         docker push "$GAR_ZONE-docker.pkg.dev/$PROJECT_ID/$GAR_REPO/$IMAGE:$IMAGE_TAG"
 
-    # Deploy the Docker image to the GKE cluster #
+    # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
         kubectl apply -f deploy.yml
