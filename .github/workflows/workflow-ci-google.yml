@@ -13,7 +13,6 @@ env:
   IMAGE_TAG: latest # image tag
   GAR_ZONE: us-east1 # artifact registry zone
   GAR_REPO: pcc-week3 # artifact registry repository
-  secrets: inherit
 
 jobs:
   setup-build-publish-deploy:
@@ -30,7 +29,6 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         credentials_json: '${{ secrets.GKE_SA_KEY }}'
-        secrets: inherit
 
     # Configure Docker to use the gcloud command-line tool as a credential
     # helper for authentication
