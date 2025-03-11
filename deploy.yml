@@ -16,14 +16,14 @@ spec:
     spec:
       containers:
         - name: my-app-container
-          image: "us-east1-docker.pkg.dev/cloud-concepts-451813/pcc-week3/image-pcc3:latest" 
+          image: "us-east1-docker.pkg.dev/week1-450418/pcc-week3/image-pcc3:latest" 
           ports:
             - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: blue-service
 spec:
   selector:
     app: my-app
