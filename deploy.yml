@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: green-service
+  name: my-app-service
 spec:
   selector:
     app: my-app
