@@ -27,7 +27,7 @@ metadata:
 spec:
   selector:
     app: my-app
-    version: green  # Start with pointing to the blue version
+    version: green  ## Start with pointing to the blue version
   ports:
     - port: 80
       targetPort: 80
